@@ -17,17 +17,17 @@ enum layers {
     LOL_FN_LAYER
 };
 
-// Switch positions (matching ZMK)
-#define SN 0  // TOP
-#define SA 1  // TOP  
-#define SE 2  // TOP
-#define SO 3  // TOP
-#define SP 4  // BOTTOM
-#define SC 5  // BOTTOM
-#define ST 6  // BOTTOM
-#define SH 7  // BOTTOM
-#define SOT 8 // O-THUMB
-#define SIT 9 // I-THUMB
+// Switch positions (matching ZMK) - renamed to avoid AVR conflicts
+#define SN 0   // TOP
+#define SA 1   // TOP  
+#define S_E 2  // TOP (renamed from SE to avoid conflict)
+#define SO 3   // TOP
+#define S_P 4  // BOTTOM (renamed from SP to avoid conflict)
+#define SC 5   // BOTTOM
+#define ST 6   // BOTTOM
+#define SH 7   // BOTTOM
+#define SOT 8  // O-THUMB
+#define SIT 9  // I-THUMB
 
 // Tap dance declarations
 enum {
@@ -67,134 +67,151 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_ADD_CTRL_FN] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_add_ctrl_fn, dance_add_ctrl_fn_reset),
 };
 
-// Combo definitions
+// Expanded combo definitions
 enum combos {
-    // Basic thumb combos
-    COMBO_SPACE,
-    COMBO_BSPC,
-    
-    // Single key combos
-    COMBO_B, COMBO_F, COMBO_T, COMBO_J, COMBO_H, COMBO_C, COMBO_N, COMBO_Y,
-    
-    // Two key combos  
-    COMBO_D, COMBO_K, COMBO_R, COMBO_V, COMBO_L, COMBO_G, COMBO_E, COMBO_Z,
-    COMBO_S, COMBO_M, COMBO_U, COMBO_P, COMBO_COMMA, COMBO_X, COMBO_Q,
-    COMBO_LBKT, COMBO_SEMI, COMBO_I, COMBO_DOT, COMBO_W, COMBO_O,
-    COMBO_SQT, COMBO_A, COMBO_RBKT,
-    
-    // Three key combos
-    COMBO_GRAVE, COMBO_NUBS,
-    
-    // Four key combos
-    COMBO_DEL, COMBO_ESC, COMBO_TAB, COMBO_ENTER,
-    
-    // Layer switching
+    // Basic system combos
+    COMBO_ESC,
+    COMBO_TAB,
+    COMBO_ENTER,
+    COMBO_DEL,
     COMBO_SLCT,
     
-    // Inner thumb combos (with SIT)
-    COMBO_B_I, COMBO_F_I, COMBO_T_I, COMBO_J_I, COMBO_H_I, COMBO_C_I, COMBO_N_I, COMBO_Y_I,
-    COMBO_D_I, COMBO_K_I, COMBO_R_I, COMBO_V_I, COMBO_L_I, COMBO_G_I, COMBO_E_I, COMBO_Z_I,
-    COMBO_S_I, COMBO_M_I, COMBO_U_I, COMBO_P_I, COMBO_COMMA_I, COMBO_X_I, COMBO_Q_I,
-    COMBO_LBKT_I, COMBO_SEMI_I, COMBO_I_I, COMBO_DOT_I, COMBO_W_I, COMBO_O_I,
-    COMBO_SQT_I, COMBO_A_I, COMBO_RBKT_I, COMBO_GRAVE_I, COMBO_NUBS_I,
+    // Single key combos (individual switches)
+    COMBO_B,
+    COMBO_F,
+    COMBO_T,
+    COMBO_J,
+    COMBO_H,
+    COMBO_C,
+    COMBO_N,
+    COMBO_Y,
     
-    // Outer thumb combos (with SOT)
-    COMBO_B_O, COMBO_F_O, COMBO_T_O, COMBO_J_O, COMBO_H_O, COMBO_C_O, COMBO_N_O, COMBO_Y_O,
-    COMBO_D_O, COMBO_K_O, COMBO_R_O, COMBO_V_O, COMBO_L_O, COMBO_G_O, COMBO_E_O, COMBO_Z_O,
-    COMBO_S_O, COMBO_M_O, COMBO_U_O, COMBO_P_O, COMBO_COMMA_O, COMBO_X_O, COMBO_Q_O,
-    COMBO_LBKT_O, COMBO_SEMI_O, COMBO_I_O, COMBO_DOT_O, COMBO_W_O, COMBO_O_O,
-    COMBO_SQT_O, COMBO_A_O, COMBO_RBKT_O, COMBO_GRAVE_O, COMBO_NUBS_O,
+    // Two key combos
+    COMBO_D,
+    COMBO_K,
+    COMBO_R,
+    COMBO_V,
+    COMBO_L,
+    COMBO_G,
+    COMBO_EE,
+    COMBO_Z,
+    COMBO_S,
+    COMBO_M,
+    COMBO_U,
+    COMBO_P,
+    COMBO_COMMA,
+    COMBO_X,
+    COMBO_Q,
+    COMBO_LBKT,
+    COMBO_SEMI,
+    COMBO_I,
+    COMBO_DOT,
+    COMBO_W,
+    COMBO_O,
+    COMBO_SQT,
+    COMBO_A,
+    COMBO_RBKT,
     
-    // Both thumb combos (with SIT and SOT)
-    COMBO_B_B, COMBO_F_B, COMBO_T_B, COMBO_J_B, COMBO_H_B, COMBO_C_B, COMBO_N_B, COMBO_Y_B,
-    COMBO_D_B, COMBO_K_B, COMBO_R_B, COMBO_V_B, COMBO_L_B, COMBO_G_B, COMBO_E_B, COMBO_Z_B,
-    COMBO_S_B, COMBO_M_B, COMBO_U_B, COMBO_P_B,
+    // Three key combos
+    COMBO_GRAVE,
+    COMBO_NUBS,
+    
+    // Thumb + key combos (shifted versions)
+    COMBO_B_SH,
+    COMBO_F_SH,
+    COMBO_T_SH,
+    COMBO_J_SH,
+    COMBO_H_SH,
+    COMBO_C_SH,
+    COMBO_N_SH,
+    COMBO_Y_SH,
+    
+    // Thumb + key combos (navigation)
+    COMBO_B_NAV,
+    COMBO_F_NAV,
+    COMBO_T_NAV,
+    COMBO_J_NAV,
+    COMBO_H_NAV,
+    COMBO_C_NAV,
+    COMBO_N_NAV,
+    COMBO_Y_NAV,
 };
 
 // Combo key positions
-const uint16_t PROGMEM combo_space[] = {SIT, COMBO_END};
-const uint16_t PROGMEM combo_bspc[] = {SOT, COMBO_END};
+const uint16_t PROGMEM combo_esc[] = {S_E, ST, COMBO_END};
+const uint16_t PROGMEM combo_tab[] = {SN, S_P, COMBO_END};
+const uint16_t PROGMEM combo_enter[] = {SO, SH, COMBO_END};
+const uint16_t PROGMEM combo_del[] = {SA, SC, COMBO_END};
+const uint16_t PROGMEM combo_slct[] = {SN, SA, S_E, SO, COMBO_END};
 
 // Single key combos
 const uint16_t PROGMEM combo_b[] = {SN, COMBO_END};
 const uint16_t PROGMEM combo_f[] = {SA, COMBO_END};
-const uint16_t PROGMEM combo_t[] = {SE, COMBO_END};
+const uint16_t PROGMEM combo_t[] = {S_E, COMBO_END};
 const uint16_t PROGMEM combo_j[] = {SO, COMBO_END};
-const uint16_t PROGMEM combo_h[] = {SP, COMBO_END};
+const uint16_t PROGMEM combo_h[] = {S_P, COMBO_END};
 const uint16_t PROGMEM combo_c[] = {SC, COMBO_END};
 const uint16_t PROGMEM combo_n[] = {ST, COMBO_END};
 const uint16_t PROGMEM combo_y[] = {SH, COMBO_END};
 
 // Two key combos
 const uint16_t PROGMEM combo_d[] = {SN, SO, COMBO_END};
-const uint16_t PROGMEM combo_k[] = {SP, SH, COMBO_END};
-const uint16_t PROGMEM combo_r[] = {SP, SC, COMBO_END};
+const uint16_t PROGMEM combo_k[] = {S_P, SH, COMBO_END};
+const uint16_t PROGMEM combo_r[] = {S_P, SC, COMBO_END};
 const uint16_t PROGMEM combo_v[] = {ST, SH, COMBO_END};
 const uint16_t PROGMEM combo_l[] = {SN, SA, COMBO_END};
-const uint16_t PROGMEM combo_g[] = {SE, SO, COMBO_END};
-const uint16_t PROGMEM combo_e[] = {SC, ST, COMBO_END};
-const uint16_t PROGMEM combo_z[] = {SA, SE, COMBO_END};
-const uint16_t PROGMEM combo_s[] = {SP, ST, COMBO_END};
+const uint16_t PROGMEM combo_g[] = {S_E, SO, COMBO_END};
+const uint16_t PROGMEM combo_ee[] = {SC, ST, COMBO_END};
+const uint16_t PROGMEM combo_z[] = {SA, S_E, COMBO_END};
+const uint16_t PROGMEM combo_s[] = {S_P, ST, COMBO_END};
 const uint16_t PROGMEM combo_m[] = {SC, SH, COMBO_END};
-const uint16_t PROGMEM combo_u[] = {SN, SE, COMBO_END};
+const uint16_t PROGMEM combo_u[] = {SN, S_E, COMBO_END};
 const uint16_t PROGMEM combo_p[] = {SA, SO, COMBO_END};
 const uint16_t PROGMEM combo_comma[] = {SN, SH, COMBO_END};
-const uint16_t PROGMEM combo_x[] = {SP, SO, COMBO_END};
+const uint16_t PROGMEM combo_x[] = {S_P, SO, COMBO_END};
 const uint16_t PROGMEM combo_q[] = {SN, ST, COMBO_END};
 const uint16_t PROGMEM combo_lbkt[] = {SC, SO, COMBO_END};
-const uint16_t PROGMEM combo_semi[] = {SP, SE, COMBO_END};
+const uint16_t PROGMEM combo_semi[] = {S_P, S_E, COMBO_END};
 const uint16_t PROGMEM combo_i[] = {SA, SH, COMBO_END};
 const uint16_t PROGMEM combo_dot[] = {SN, SC, COMBO_END};
 const uint16_t PROGMEM combo_w[] = {SO, ST, COMBO_END};
 const uint16_t PROGMEM combo_o[] = {SA, ST, COMBO_END};
-const uint16_t PROGMEM combo_sqt[] = {SE, SC, COMBO_END};
-const uint16_t PROGMEM combo_a[] = {SE, SH, COMBO_END};
-const uint16_t PROGMEM combo_rbkt[] = {SA, SP, COMBO_END};
+const uint16_t PROGMEM combo_sqt[] = {S_E, SC, COMBO_END};
+const uint16_t PROGMEM combo_a[] = {S_E, SH, COMBO_END};
+const uint16_t PROGMEM combo_rbkt[] = {SA, S_P, COMBO_END};
 
 // Three key combos
-const uint16_t PROGMEM combo_grave[] = {SA, SE, SO, COMBO_END};
+const uint16_t PROGMEM combo_grave[] = {SA, S_E, SO, COMBO_END};
 const uint16_t PROGMEM combo_nubs[] = {SC, ST, SH, COMBO_END};
 
-// Four key combos  
-const uint16_t PROGMEM combo_del[] = {SA, SC, COMBO_END};
-const uint16_t PROGMEM combo_esc[] = {SE, ST, COMBO_END};
-const uint16_t PROGMEM combo_tab[] = {SN, SP, COMBO_END};
-const uint16_t PROGMEM combo_enter[] = {SO, SH, COMBO_END};
+// Thumb + key combos (shifted versions with SIT)
+const uint16_t PROGMEM combo_b_sh[] = {SN, SIT, COMBO_END};
+const uint16_t PROGMEM combo_f_sh[] = {SA, SIT, COMBO_END};
+const uint16_t PROGMEM combo_t_sh[] = {S_E, SIT, COMBO_END};
+const uint16_t PROGMEM combo_j_sh[] = {SO, SIT, COMBO_END};
+const uint16_t PROGMEM combo_h_sh[] = {S_P, SIT, COMBO_END};
+const uint16_t PROGMEM combo_c_sh[] = {SC, SIT, COMBO_END};
+const uint16_t PROGMEM combo_n_sh[] = {ST, SIT, COMBO_END};
+const uint16_t PROGMEM combo_y_sh[] = {SH, SIT, COMBO_END};
 
-// Layer switching
-const uint16_t PROGMEM combo_slct[] = {SN, SA, SE, SO, COMBO_END};
-
-// Inner thumb variants (add SIT to each combo)
-const uint16_t PROGMEM combo_b_i[] = {SN, SIT, COMBO_END};
-const uint16_t PROGMEM combo_f_i[] = {SA, SIT, COMBO_END};
-const uint16_t PROGMEM combo_t_i[] = {SE, SIT, COMBO_END};
-const uint16_t PROGMEM combo_j_i[] = {SO, SIT, COMBO_END};
-const uint16_t PROGMEM combo_h_i[] = {SP, SIT, COMBO_END};
-const uint16_t PROGMEM combo_c_i[] = {SC, SIT, COMBO_END};
-const uint16_t PROGMEM combo_n_i[] = {ST, SIT, COMBO_END};
-const uint16_t PROGMEM combo_y_i[] = {SH, SIT, COMBO_END};
-
-// Outer thumb variants (add SOT to each combo)
-const uint16_t PROGMEM combo_b_o[] = {SN, SOT, COMBO_END};
-const uint16_t PROGMEM combo_f_o[] = {SA, SOT, COMBO_END};
-const uint16_t PROGMEM combo_t_o[] = {SE, SOT, COMBO_END};
-const uint16_t PROGMEM combo_j_o[] = {SO, SOT, COMBO_END};
-const uint16_t PROGMEM combo_h_o[] = {SP, SOT, COMBO_END};
-const uint16_t PROGMEM combo_c_o[] = {SC, SOT, COMBO_END};
-const uint16_t PROGMEM combo_n_o[] = {ST, SOT, COMBO_END};
-const uint16_t PROGMEM combo_y_o[] = {SH, SOT, COMBO_END};
-
-// Both thumb variants (add SIT and SOT to each combo)
-const uint16_t PROGMEM combo_b_b[] = {SN, SIT, SOT, COMBO_END};
-const uint16_t PROGMEM combo_f_b[] = {SA, SIT, SOT, COMBO_END};
-const uint16_t PROGMEM combo_t_b[] = {SE, SIT, SOT, COMBO_END};
-const uint16_t PROGMEM combo_j_b[] = {SO, SIT, SOT, COMBO_END};
+// Thumb + key combos (navigation with SOT)
+const uint16_t PROGMEM combo_b_nav[] = {SN, SOT, COMBO_END};
+const uint16_t PROGMEM combo_f_nav[] = {SA, SOT, COMBO_END};
+const uint16_t PROGMEM combo_t_nav[] = {S_E, SOT, COMBO_END};
+const uint16_t PROGMEM combo_j_nav[] = {SO, SOT, COMBO_END};
+const uint16_t PROGMEM combo_h_nav[] = {S_P, SOT, COMBO_END};
+const uint16_t PROGMEM combo_c_nav[] = {SC, SOT, COMBO_END};
+const uint16_t PROGMEM combo_n_nav[] = {ST, SOT, COMBO_END};
+const uint16_t PROGMEM combo_y_nav[] = {SH, SOT, COMBO_END};
 
 // Combo actions
 combo_t key_combos[] = {
-    // Basic thumb combos
-    [COMBO_SPACE] = COMBO(combo_space, KC_SPC),
-    [COMBO_BSPC] = COMBO(combo_bspc, KC_BSPC),
+    // Basic system combos
+    [COMBO_ESC] = COMBO(combo_esc, KC_ESC),
+    [COMBO_TAB] = COMBO(combo_tab, KC_TAB),
+    [COMBO_ENTER] = COMBO(combo_enter, KC_ENT),
+    [COMBO_DEL] = COMBO(combo_del, KC_DEL),
+    [COMBO_SLCT] = COMBO(combo_slct, TO(SELECTION_LAYER)),
     
     // Single key combos
     [COMBO_B] = COMBO(combo_b, KC_B),
@@ -213,7 +230,7 @@ combo_t key_combos[] = {
     [COMBO_V] = COMBO(combo_v, KC_V),
     [COMBO_L] = COMBO(combo_l, KC_L),
     [COMBO_G] = COMBO(combo_g, KC_G),
-    [COMBO_E] = COMBO(combo_e, KC_E),
+    [COMBO_EE] = COMBO(combo_ee, KC_E),
     [COMBO_Z] = COMBO(combo_z, KC_Z),
     [COMBO_S] = COMBO(combo_s, KC_S),
     [COMBO_M] = COMBO(combo_m, KC_M),
@@ -236,40 +253,25 @@ combo_t key_combos[] = {
     [COMBO_GRAVE] = COMBO(combo_grave, KC_GRV),
     [COMBO_NUBS] = COMBO(combo_nubs, KC_NUBS),
     
-    // Four key combos
-    [COMBO_DEL] = COMBO(combo_del, KC_DEL),
-    [COMBO_ESC] = COMBO(combo_esc, KC_ESC),
-    [COMBO_TAB] = COMBO(combo_tab, KC_TAB),
-    [COMBO_ENTER] = COMBO(combo_enter, KC_ENT),
+    // Thumb + key combos (shifted versions)
+    [COMBO_B_SH] = COMBO(combo_b_sh, S(KC_B)),
+    [COMBO_F_SH] = COMBO(combo_f_sh, S(KC_F)),
+    [COMBO_T_SH] = COMBO(combo_t_sh, S(KC_T)),
+    [COMBO_J_SH] = COMBO(combo_j_sh, S(KC_J)),
+    [COMBO_H_SH] = COMBO(combo_h_sh, S(KC_H)),
+    [COMBO_C_SH] = COMBO(combo_c_sh, S(KC_C)),
+    [COMBO_N_SH] = COMBO(combo_n_sh, S(KC_N)),
+    [COMBO_Y_SH] = COMBO(combo_y_sh, S(KC_Y)),
     
-    // Layer switching
-    [COMBO_SLCT] = COMBO(combo_slct, TO(SELECTION_LAYER)),
-    
-    // Inner thumb variants (shifted versions)
-    [COMBO_B_I] = COMBO(combo_b_i, S(KC_B)),
-    [COMBO_F_I] = COMBO(combo_f_i, S(KC_F)),
-    [COMBO_T_I] = COMBO(combo_t_i, S(KC_T)),
-    [COMBO_J_I] = COMBO(combo_j_i, S(KC_J)),
-    [COMBO_H_I] = COMBO(combo_h_i, S(KC_H)),
-    [COMBO_C_I] = COMBO(combo_c_i, S(KC_C)),
-    [COMBO_N_I] = COMBO(combo_n_i, S(KC_N)),
-    [COMBO_Y_I] = COMBO(combo_y_i, S(KC_Y)),
-    
-    // Outer thumb variants (navigation/modifiers)
-    [COMBO_B_O] = COMBO(combo_b_o, KC_LEFT),
-    [COMBO_F_O] = COMBO(combo_f_o, KC_UP),
-    [COMBO_T_O] = COMBO(combo_t_o, KC_DOWN),
-    [COMBO_J_O] = COMBO(combo_j_o, KC_RGHT),
-    [COMBO_H_O] = COMBO(combo_h_o, OSM(MOD_LGUI)),
-    [COMBO_C_O] = COMBO(combo_c_o, OSM(MOD_LALT)),
-    [COMBO_N_O] = COMBO(combo_n_o, OSM(MOD_LCTL)),
-    [COMBO_Y_O] = COMBO(combo_y_o, OSM(MOD_LSFT)),
-    
-    // Both thumb variants (special functions)
-    [COMBO_B_B] = COMBO(combo_b_b, S(KC_LEFT)),
-    [COMBO_F_B] = COMBO(combo_f_b, S(KC_UP)),
-    [COMBO_T_B] = COMBO(combo_t_b, S(KC_DOWN)),
-    [COMBO_J_B] = COMBO(combo_j_b, S(KC_RGHT)),
+    // Thumb + key combos (navigation/modifiers)
+    [COMBO_B_NAV] = COMBO(combo_b_nav, KC_LEFT),
+    [COMBO_F_NAV] = COMBO(combo_f_nav, KC_UP),
+    [COMBO_T_NAV] = COMBO(combo_t_nav, KC_DOWN),
+    [COMBO_J_NAV] = COMBO(combo_j_nav, KC_RGHT),
+    [COMBO_H_NAV] = COMBO(combo_h_nav, OSM(MOD_LGUI)),
+    [COMBO_C_NAV] = COMBO(combo_c_nav, OSM(MOD_LALT)),
+    [COMBO_N_NAV] = COMBO(combo_n_nav, OSM(MOD_LCTL)),
+    [COMBO_Y_NAV] = COMBO(combo_y_nav, OSM(MOD_LSFT)),
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
