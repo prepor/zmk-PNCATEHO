@@ -10,7 +10,29 @@
         "mousekey": true,
         "nkro": true,
         "combo": true,
-        "tap_dance": true
+        "tap_dance": true,
+        "rgblight": true
+    },
+    "rgblight": {
+        "led_count": 10,
+        "pin": "D3",
+        "hue_steps": 8,
+        "saturation_steps": 8,
+        "brightness_steps": 8,
+        "max_brightness": 255,
+        "sleep": true,
+        "animations": {
+            "breathing": true,
+            "rainbow_mood": true,
+            "rainbow_swirl": true,
+            "snake": true,
+            "knight": true,
+            "christmas": true,
+            "static_gradient": true,
+            "rgb_test": true,
+            "alternating": true,
+            "twinkle": true
+        }
     },
     "host": {
         "default": {

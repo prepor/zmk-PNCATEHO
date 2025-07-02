@@ -456,12 +456,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     /*
-     * Layer 5: RGB_LAYER (placeholder - basic RGB not implemented)
+     * Layer 5: RGB_LAYER (5) - RGB lighting controls
+     * ┌───┬───┬───┬───┐
+     * │TOG│NXT│HUE│SAT│
+     * ├───┼───┼───┼───┤
+     * │PRV│PLA│HUD│SAT│
+     * └───┴───┴───┴───┘
+     *     ┌───┬───┐
+     *     │VAL│VAL│
+     *     └───┴───┘
      */
     [RGB_LAYER] = LAYOUT(
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                 TO(COMBO_LAYER), KC_NO
+        UG_TOGG,    UG_NEXT,    UG_HUEU,    UG_SATU,    // Toggle, Next Mode, Hue+, Sat+
+        UG_PREV,    RGB_M_P,    UG_HUED,    UG_SATD,    // Prev Mode, Plain, Hue-, Sat-
+                    UG_VALU,    UG_VALD                   // Brightness+, Brightness-
     ),
 
     /*

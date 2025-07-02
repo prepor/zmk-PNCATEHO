@@ -35,6 +35,10 @@
 #define MATRIX_ROWS 1
 #define MATRIX_COLS 10
 
+// RGB lighting configuration
+#define WS2812_DI_PIN D3
+#define RGBLIGHT_LED_COUNT 10
+
 // Timing configuration
 #define TAPPING_TERM 200
 #define COMBO_TERM 70
